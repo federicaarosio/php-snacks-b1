@@ -1,10 +1,12 @@
-<!-- ## Snack 1
+<!-- Con un form passare come parametri GET name, mail e age e verificare (cercando i metodi che non conosciamo nella documentazione) che name sia più lungo di 3 caratteri, che mail contenga un punto e una chiocciola e che age sia un numero. Se tutto è ok stampare "Accesso riuscito", altrimenti "Accesso negato" -->
 
-// Creiamo un array contenente le partite di basket di un'ipotetica tappa del calendario. Ogni array avrà una squadra di casa e una squadra ospite, punti fatti dalla squadra di casa e punti fatti dalla squadra ospite. Stampiamo a schermo tutte le partite con questo schema:
+<?php 
 
-// Olimpia Milano - Cantù | 55-60 -->
+$name = $_GET['name'];
+$mail = $_GET['mail'];
+$age = $_GET['age'];
 
-
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,46 +14,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Snack 2</title>
 </head>
 
 <body>
 
-    <?php 
+    <form action="./index.php" method="$_GET">
+        <p>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+        </p>
+        <p>
+            <label for="mail">Mail:</label>
+            <input type="text" name="mail" id="mail">
+        </p>
+        <p>
+            <label for="age">Age:</label>
+            <input type="text" name="age" id="age">
+        </p>
+        <button>
+            Submit
+        </button>
+    </form>
 
-        $partita = [
-            [
-                "squadraCasa" => 'Basket Roma',
-                "squadraOspite" => 'Basket Milano',
-                "pxCasa" => 100,
-                "pxOspite" => 40,
-            ],
-            [
-                "squadraCasa" => 'Basket Torino',
-                "squadraOspite" => 'Basket Napoli',
-                "pxCasa" => 40,
-                "pxOspite" => 20,
-            ],
-            [
-                "squadraCasa" => 'Basket Bologna',
-                "squadraOspite" => 'Basket Vicenza',
-                "pxCasa" => 30,
-                "pxOspite" => 70,
-            ],
-            [
-                "squadraCasa" => 'Basket Salerno',
-                "squadraOspite" => 'Basket Urbino',
-                "pxCasa" => 60,
-                "pxOspite" => 60,
-            ]
-        ];
+    <p>
+        <?php
+        if (empty($mail) && empty($name) && empty($age)) {
+        } 
+        elseif ((strlen($name) > 3) && (str_contains($mail, '@')) && (str_contains($mail, '.')) && (is_numeric($age)))  {
+            echo 'accesso riuscito';
+        } else {
+            echo 'accesso negato';
+        }
 
+    ?>
+    </p>
 
-for ($i = 0; $i < count($partita); $i++) {
-    echo $partita[$i]['squadraCasa'] . ' ' . '-' . ' ' . $partita[$i]['squadraOspite'] . ' ' . '|' . ' ' . $partita[$i]['pxCasa'] . '-' . $partita[$i]['pxOspite'] . '<br>' ;;
-}
-
-?>
 
 
 </body>
