@@ -47,7 +47,7 @@ $age = $_GET['age'];
             echo 'accesso negato';
         }
 
-    ?>
+        ?>
     </p>
 
 
